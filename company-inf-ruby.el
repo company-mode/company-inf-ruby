@@ -5,7 +5,7 @@
 ;; Author: Dmitry Gutov <dgutov@yandex.ru>
 ;; Version: 0.1
 ;; URL: https://github.com/company-mode/company-inf-ruby
-;; Package-Requires: ((company "0.6.10") (inf-ruby "2.2.6")
+;; Package-Requires: ((company "0.6.10") (inf-ruby "2.2.6"))
 
 ;; This file is NOT part of GNU Emacs.
 
