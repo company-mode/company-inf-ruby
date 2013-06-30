@@ -3,9 +3,9 @@
 ;; Copyright (C) 2013  Dmitry Gutov
 
 ;; Author: Dmitry Gutov <dgutov@yandex.ru>
-;; Version: 0.1
+;; Version: 0.2
 ;; URL: https://github.com/company-mode/company-inf-ruby
-;; Package-Requires: ((company "0.6.10") (inf-ruby "2.2.6"))
+;; Package-Requires: ((company "0.6.10") (inf-ruby "2.2.7"))
 
 ;; This file is NOT part of GNU Emacs.
 
@@ -38,11 +38,7 @@
     (interactive (company-begin-backend 'company-inf-ruby))
     (prefix (and (eq major-mode 'inf-ruby-mode)
                  inf-ruby-at-top-level-prompt-p
-                 (buffer-substring
-                  (save-excursion
-                    (re-search-backward "[[({ >,+*^%&|!=-]")
-                    (1+ (point)))
-                  (point))))
+                 (inf-ruby-completion-expr-at-point)))
     (candidates (inf-ruby-completions arg))))
 
 (provide 'company-inf-ruby)
