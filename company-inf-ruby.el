@@ -37,9 +37,9 @@
   (case command
     (interactive (company-begin-backend 'company-inf-ruby))
     (prefix (and (eq major-mode 'inf-ruby-mode)
-                 inf-ruby-at-top-level-prompt-p
                  (inf-ruby-completion-expr-at-point)))
-    (candidates (inf-ruby-completions arg))))
+    (candidates (and inf-ruby-at-top-level-prompt-p
+                     (inf-ruby-completions arg)))))
 
 (provide 'company-inf-ruby)
 ;;; company-inf-ruby.el ends here
