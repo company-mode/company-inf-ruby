@@ -1,11 +1,11 @@
 ;;; company-inf-ruby.el --- company-mode completion back-end for inf-ruby
 
-;; Copyright (C) 2013  Dmitry Gutov
+;; Copyright (C) 2013-2014  Dmitry Gutov
 
 ;; Author: Dmitry Gutov <dgutov@yandex.ru>
-;; Version: 0.2
+;; Version: 0.3
 ;; URL: https://github.com/company-mode/company-inf-ruby
-;; Package-Requires: ((company "0.6.10") (inf-ruby "2.2.7"))
+;; Package-Requires: ((company "0.6.10") (inf-ruby "2.2.7") (emacs "24.1"))
 
 ;; This file is NOT part of GNU Emacs.
 
@@ -34,12 +34,12 @@
 (defun company-inf-ruby (command &optional arg &rest ignored)
   "`company-mode' completion back-end for `inf-ruby-mode'."
   (interactive (list 'interactive))
-  (case command
-    (interactive (company-begin-backend 'company-inf-ruby))
-    (prefix (and (eq major-mode 'inf-ruby-mode)
-                 (inf-ruby-completion-expr-at-point)))
-    (candidates (and inf-ruby-at-top-level-prompt-p
-                     (inf-ruby-completions arg)))))
+  (pcase command
+    (`interactive (company-begin-backend 'company-inf-ruby))
+    (`prefix (and (eq major-mode 'inf-ruby-mode)
+                  (inf-ruby-completion-expr-at-point)))
+    (`candidates (and inf-ruby-at-top-level-prompt-p
+                      (inf-ruby-completions arg)))))
 
 (provide 'company-inf-ruby)
 ;;; company-inf-ruby.el ends here
